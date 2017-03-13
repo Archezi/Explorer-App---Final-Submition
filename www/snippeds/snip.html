@@ -1,0 +1,31 @@
+<div class="row" >
+	<div  class="col-sm-12 col-md-12">
+		<div class="list card" ng-repeat="place in places | orderBy:sortFild:reverse"
+		href="#/app/search/{{place.place_id}}">
+			<div class="item item-divider">
+				<h4>{{place.name}}</h4>
+			</div>
+			<div class="item item-image">
+				<img ng-src="{{place.photos[0].getUrl({'maxWidth': 175, 'maxHeight': 175})}}" alt="">
+			</div>
+			<div class="item item-text-wrap">
+				<p>RATING {{place.rating}}</p>
+			</div>
+			<!-- <div class="item item-divider">
+				I'm a Footer in a Card!
+			</div> -->
+		</div>
+		<!-- <ul >
+			<li ng-repeat="place in places | orderBy:sortFild:reverse">
+
+				<div class="caption col-sm-12">
+					<img ng-src="{{place.photos[0].getUrl({'maxWidth': 175, 'maxHeight': 175})}}" alt="">
+					
+					
+
+				</div>
+			</li>
+		</ul> -->
+
+	</div>
+</div>

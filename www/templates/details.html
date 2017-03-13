@@ -1,0 +1,16 @@
+<ion-header-bar class="bar-positive">
+  <h2 class="title">More Info</h2>
+</ion-header-bar>
+<ion-view>
+  <ion-content>
+    <ion-list class="list-inset">
+      <ion-item class="item-text-wrap"
+        ng-repeat="place in places | filter: {place_id: singleLocation}">
+          <img ng-src="{{place.photos[0].getUrl({'maxWidth': 175, 'maxHeight': 175})}}" alt="">
+          <h2>{{ place.name }}</h2>
+          <h3>{{ place.rating }}</h3>
+          <p>{{ place.bio }}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
