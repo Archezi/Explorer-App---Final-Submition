@@ -41,19 +41,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-// .controller('PlaylistsCtrl', function($scope) {
-//   $scope.playlists = [
-//     { title: 'Reggae', id: 1 },
-//     { title: 'Chill', id: 2 },
-//     { title: 'Dubstep', id: 3 },
-//     { title: 'Indie', id: 4 },
-//     { title: 'Rap', id: 5 },
-//     { title: 'Cowbell', id: 6 }
-//   ];
-// })
 
-// .controller('PlaylistCtrl', function($scope, $stateParams) {
-// });
 angular.module('starter')
 .controller('googleCtrl', ['$scope', '$state', '$rootScope', function($scope, $state,$rootScope ){
 
@@ -64,6 +52,7 @@ angular.module('starter')
   $scope.placeNameArr = [];
   console.log($scope.placeNameArr);
   
+  //    GOOGLE MAP API INTEGRATION 
 
   function initialise (position) {
     $scope.$apply(function(){
@@ -73,104 +62,87 @@ angular.module('starter')
         center: center,
         zoom:12
       });
-
-
-
       
       var defaultBounds = new google.maps.LatLngBounds(
         new google.maps.LatLng(),
         new google.maps.LatLng());
-        // -33.8902, 151.1759
-        // -33.8474, 151.2631
+
       var option = {
         bounds: defaultBounds,
         types: ['(cities)']
       };
 
-      var input = document.getElementById('pac-input');
-      map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-      // var autocomplete = new google.maps.places.Autocomplete(input, option) ;
-
       var request = {
         location: center,
         radius: 8047,
-        types: [ 'park', 'restaurant']
-        // 
+        types: [ 'Park', 'Restaurant', 'Café']
+        // 'Airport' , 'Café' , 'Church' , 'Park' , 'University'
+        // Posible location types from Google API 
       };  
 
-
-
-
       infowindow = new google.maps.InfoWindow();
-
       
       var service = new google.maps.places.PlacesService(map);
 
       service.nearbySearch(request, callback);
 
     })
-
-
   }
-
-
-
-
   function callback(results, stattus) {
     if(stattus == google.maps.places.PlacesServiceStatus.OK) {
       for (var i=0; i < results.length; i++) {
         var place = results[i]
         createMarker(results[i]);
-        // console.log(results);
-
       }
-       $scope.$apply(function () {
-                  $scope.places = results;
-                  console.log( $scope.places);
-              });
+    
+      $scope.$apply(function () {
+        $scope.places = results;
+        // DATA BAINDING 
+      });
 
     }
   }
-  // $scope.markerCreation =
-   function createMarker(place) {
+  function createMarker(place) {
     var placeLoc = place.geometry.location;
      photos = place.photos;
-     // console.log(photos);
+     
     if (!photos) {
-      return;
-
-      // $scope.googlePhoto = place.photo;
-      // console.log($scope.googlePhoto);
+        return;
     }
-    
     var marker = new google.maps.Marker({
+      
       map: map,
-      position: place.geometry.location
-      // titile: place.name,
-      // icon: photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35})
-    
+      position: place.geometry.location,
+      titile: place.name,
+        
     });
-    // $scope.photoList = photos;
-    // $scope.markerList = place.photos[0];
-    //  console.log($scope.markerList);
-    
 
     google.maps.event.addListener(marker, 'click', function(){
 
-      infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-              'Place ID: ' + place.place_id + '<br>' +
-               '<img src='+ place.photos[0].getUrl({'maxWidth': 175, 'maxHeight': 175}) +'>' + '<br>' + 'Rating:' + place.rating + '<img src='+ place.photos +'>' + '</div>');
+      infowindow.setContent(
+
+        '<div class="marker"><h4>' + place.name + '</h4><br>' +
+        '<img src='+ place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) +'>' + '<br>' + 
+        '<p>' + 'Rating:' + place.rating + '</p>'+ '<p>' +'Open Now ' + place.opening_hours.open_now + '</p>'
+       
+        );
+      
       infowindow.open(map,this);
-      // console.log(infowindow);
+      
       
     })
-    // console.log(place);
+    
     $scope.placeNameArr.push(place.name);
   }
 
   navigator.geolocation.getCurrentPosition(initialise);
-  // google.maps.event.addDomListener(window, 'load', initialize);
+  
+  $scope.removeObject = function( place ) {
+      
+    var index = $scope.places.indexOf(place);
+    // splice is a java script array function 
+    $scope.places.splice(index, 1);
+  }
 
 }]);
 

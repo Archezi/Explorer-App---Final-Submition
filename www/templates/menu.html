@@ -18,27 +18,39 @@
     </ion-nav-buttons>
   </ion-side-menu-content>
 
-  <ion-side-menu side="left">
-    <ion-header-bar class="bar-stable">
-      <h1 class="title">Left</h1>
+  <ion-side-menu side="left ">
+    <ion-header-bar class="bar-stable ">
+      <h1 class="title">Lukasz Kaczmarek</h1>
     </ion-header-bar>
     <ion-content>
       <ion-list>
+        <ion-item menu-close >
+          <a href="#/app/search" class=" item-icon-left myMenu">
+          <img src="../img/guideIcon.png" height="24px;" width="24px;" alt="">
+              
+              My Guides
+            </a>
+        </ion-item>
+        <ion-item menu-close >
+          <a href="#/app/search" class=" item-icon-left myMenu">
+            <img src="../img/fav.png" height="20px;" width="20px;" alt="">
+            Favorite Places
+          </a>
+        </ion-item>
+        <ion-item menu-close  >
+        <a href="#/app/location" class=" item-icon-left myMenu" >
+          <img src="../img/marker.png" height="24px;" width="24px;" alt="">
+          Location
+        </a>
+          
+        </ion-item>
         <ion-item menu-close ng-click="login()">
-          Login
+          <a  class=" item-icon-left myMenu">
+            <img src="../img/seting.png" height="24px;" width="24px;" alt="">
+            Login
+          </a>
         </ion-item>
-        <ion-item menu-close href="#/app/home">
-          Home
-        </ion-item>
-        <ion-item menu-close href="#/app/search">
-          Search
-        </ion-item>
-        <ion-item menu-close href="#/app/browse">
-          Browse
-        </ion-item>
-        <ion-item menu-close href="#/app/playlists">
-          Playlists
-        </ion-item>
+        
       </ion-list>
     </ion-content>
   </ion-side-menu>

@@ -2,3 +2,52 @@
 #map {
 	height: 300px;
 }
+.marker {
+
+}
+.marker h4 {
+	font-size: 12px;
+	margin: 0px;
+	padding: 0px;
+}
+.marker img {
+	margin-top: 0;
+	max-height: 80px;
+	max-width: : 250px
+}
+.marker p {
+	font-size: 10px;
+}
+.marker p {
+	margin-top: 0;
+	margin-bottom: 5px;
+	line-height: 10px;
+}
+.bar-header {
+	
+}
+.myMenu,  
+.myMenu:hover {
+	color: #5d5d5d;
+	text-decoration: none;
+}
+.myMenu img {
+	float: left;
+}
+.removeButton {
+	position: absolute;
+	top:0px;
+	right: 0px;
+	z-index: 999;
+}
+.listItem {
+	position: relative;
+}
+.button-filters {
+	line-height: 5px;
+	margin-right: 5px;
+	padding: 5px;
+	height: 25px;
+	min-width: 20px;
+	min-height: 20px;
+}
