@@ -33,6 +33,7 @@
 }
 .myMenu img {
 	float: left;
+	z-index: 999;
 }
 .removeButton {
 	position: absolute;
