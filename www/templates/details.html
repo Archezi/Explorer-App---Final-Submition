@@ -4,12 +4,15 @@
 <ion-view>
   <ion-content>
     <ion-list class="list-inset">
-      <ion-item class="item-text-wrap"
+      <ion-item class="item-text-wrap description_details"
         ng-repeat="place in places | filter: {place_id: singleLocation}">
           <img ng-src="{{place.photos[0].getUrl({'maxWidth': 175, 'maxHeight': 175})}}" alt="">
           <h2>{{ place.name }}</h2>
-          <h3>{{ place.rating }}</h3>
-          
+          <h3>Rating {{ place.rating }}</h3>
+          <p class="">
+            {{additionalInfo}}
+          </p>
+          <p class="adress_p"><strong>Address: </strong> {{place.vicinity}}</p>
       </ion-item>
     </ion-list>
   </ion-content>

@@ -16,13 +16,18 @@
 			
 		</div>
 		
-		<ion-item class="list card listItem" ng-repeat="place in places | orderBy:sortField:reverse"
+		<ion-item class="list card listItem item-text-wrap" ng-repeat="place in places | orderBy:sortField:reverse"
 			>
 			<div class="list " >
 			    <a class="item item-thumbnail-left myListObject"  href="#/app/search/{{place.place_id}}">
 			      <img ng-src="{{place.photos[0].getUrl({'maxWidth': 175, 'maxHeight': 175})}}" alt="">
 			      <h2>{{place.name}}</h2>
 			      <p>Rating: {{place.rating}}</p>
+
+			      <p class="item-text-wrap">
+			      {{additionalInfo}}
+			      </p>
+			      <p>{{place.address_components}}</p>
 			    </a>
 			    
 			</div>
